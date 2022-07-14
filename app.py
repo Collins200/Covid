@@ -65,6 +65,13 @@ elif choose == "Project Analysis":
     </style> """, unsafe_allow_html=True)
     st.markdown('<p class="font">Showcasing various relations</p>', unsafe_allow_html=True)
 
+    st.markdown("<p style='text-align: center; font-family: monospace monospace; font-size:18px; color: yellow;'>Data story from charts below-interpretation of charts.</p>", unsafe_allow_html=True)
+   
+    st.text("a) Male are more vulnerable to Covid,Pneumonia and Influenza disease compared to female.")
+    st.text("b) The higher the number of years the more likelihood of getting the disease.")
+    st.text("c) Between 0-19 years there is a constant infection rate over time to mean minimal exposure to covid and other related diseases.")
+    
+
     st.markdown("<p style='font-family: Cooper Black;  font-size:25px; color: #FF9693;'>1. Download and view dataset</p>", unsafe_allow_html=True)
 
     st.write("The data sources for these analysis were gotten from https://hub.mph.in.gov/dataset/6bcfb11c-6b9e-44b2-be7f-a2910d28949a/resource/cb146210-5e7b-4427-82d6-6da8c08dbb1d/download/covid_report_death_date_agegrp_dictionary.xlsx and https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD")
@@ -547,6 +554,8 @@ elif choose=="Inferences":
         # The correlation between Pneumonia and Influenza Disease
         correlation3=provisional_data['Pneumonia_Deaths']. corr(provisional_data['Influenza_Deaths'])
         st.write('The correlation between Pneumonia and Influenza Disease',correlation3) 
+
+        st.markdown("<p style='text-align: center; font-family: monospace monospace; font-size:18px; color: yellow;'>KEY TAKE AWAYS: Person with Pneumonia is more vulnerable to Covid 19 compared to person with Influenza</p>", unsafe_allow_html=True)
 
 
 elif choose == "Contact":
