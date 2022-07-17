@@ -1,5 +1,3 @@
-import imp
-from cv2 import EVENT_FLAG_SHIFTKEY
 from nbformat import write
 from numpy import cov
 import streamlit as st
