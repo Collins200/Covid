@@ -1,3 +1,5 @@
+import imp
+from cv2 import EVENT_FLAG_SHIFTKEY
 from nbformat import write
 from numpy import cov
 import streamlit as st
@@ -22,7 +24,8 @@ from tqdm.notebook import tqdm
 
 from itertools import product
 from streamlit_option_menu import option_menu
-import streamlit.components.v1 as html
+# import streamlit.components.v1 as html
+import streamlit.components.v1 as components
 from  PIL import Image
 
 
@@ -37,9 +40,14 @@ with st.sidebar:
         "nav-link-selected": {"background-color": "green"},
     }
     )
-image = Image.open('corona_image.jpg')
+image = Image.open('data/corona_image.jpg')
 new_image=image.resize((900, 400))
-covid= Image.open('covid.png')
+covid= Image.open('data/analytics.png')
+
+relation= Image.open('data/relation.png')
+enquiry=Image.open('data/enquiry.png')
+
+modelling=Image.open('data/modelling.png')
 if choose == "Home":
 
     col1, col2 = st.columns( [0.8, 0.2])
@@ -47,7 +55,7 @@ if choose == "Home":
         st.markdown(""" <style> .font {
         font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
         </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">Covid-19 Analysis for predictive analytics</p>', unsafe_allow_html=True)    
+        st.markdown('<p class="font">Covid-19 Analysis For Predictive Analytics</p>', unsafe_allow_html=True)    
     with col2:               # To display brand log
         st.image(covid, width=130 )
     st.write("Coronavirus disease is an infectious disease caused by the SARS-CoV-2 virus.Most people infected with the virus will experience mild to moderate respiratory illness and recover without requiring special treatment. However, some will become seriously ill and require medical attention. Older people and those with underlying medical conditions like cardiovascular disease, diabetes, chronic respiratory disease, or cancer are more likely to develop serious illness. Anyone can get sick with COVID-19 and become seriously ill or die at any age.")
@@ -60,21 +68,85 @@ if choose == "Home":
 
 
 elif choose == "Project Analysis":
-    st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
-    </style> """, unsafe_allow_html=True)
-    st.markdown('<p class="font">Showcasing various relations</p>', unsafe_allow_html=True)
+    # st.markdown(""" <style> .font {
+    # font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+    # </style> """, unsafe_allow_html=True)
+    # st.markdown('<p class="font">Showcasing various relations</p>', unsafe_allow_html=True)
+    col10, col20 = st.columns( [0.8, 0.2])
+    with col10:               # To display the header text using css style
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">Showcasing Existing Elements Relationships</p>', unsafe_allow_html=True)    
+    with col20:               # To display brand log
+        st.image(relation, width=130 )
 
     st.markdown("<p style='text-align: center; font-family: monospace monospace; font-size:18px; color: yellow;'>Data story from charts below-interpretation of charts.</p>", unsafe_allow_html=True)
    
-    st.text("a) Male are more vulnerable to Covid,Pneumonia and Influenza disease compared to female.")
-    st.text("b) The higher the number of years the more likelihood of getting the disease.")
-    st.text("c) Between 0-19 years there is a constant infection rate over time to mean minimal exposure to covid and other related diseases.")
+    # st.text("a) Male are more vulnerable to Covid,Pneumonia and Influenza disease compared to female.")
+    # st.text("b) The higher the number of years the more likelihood of getting the disease.")
+    # st.text("c) Between 0-19 years there is a constant infection rate over time to mean minimal exposure to covid and other related diseases.")
     
+    components.html(
+    """
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div class="card" style="width:100%" class="p-3 mb-2 bg-secondary text-white">
+    <ul class="">
+        <li class="">Male are more vulnerable to Covid,Pneumonia and Influenza disease compared to female.</li>
+        <li class="">The higher the number of years the more likelihood of getting the disease.</li>
+        <li class="">Between 0-19 years there is a constant infection rate over time to mean minimal exposure to covid and other related diseases.</li>
+    </ul>
+    </div>
+    <style>
+    .card {
+    border-radius: 5px;
+    background: #395B64;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    color:white;
+    
+    }
+    </style>
+        """
+    )
+
 
     st.markdown("<p style='font-family: Cooper Black;  font-size:25px; color: #FF9693;'>1. Download and view dataset</p>", unsafe_allow_html=True)
 
-    st.write("The data sources for these analysis were gotten from https://hub.mph.in.gov/dataset/6bcfb11c-6b9e-44b2-be7f-a2910d28949a/resource/cb146210-5e7b-4427-82d6-6da8c08dbb1d/download/covid_report_death_date_agegrp_dictionary.xlsx and https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD")
+    st.write("The data sources for these analysis were gotten from two sources.Press the following download buttons to download the files.")
+    components.html(
+        """
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Auto width -->
+        <a href="https://hub.mph.in.gov/dataset/6bcfb11c-6b9e-44b2-be7f-a2910d28949a/resource/cb146210-5e7b-4427-82d6-6da8c08dbb1d/download/covid_report_death_date_agegrp_dictionary.xlsx">
+        <button class="btn" href="https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD"><i class="fa fa-download"></i> Download File 1</button>
+        </a>
+        <a href="https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD">
+        <button class="btn" href="https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD"><i class="fa fa-download"></i> Download File 2</button>
+        </a>
+        <style>
+        /* Style buttons */
+        .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+        background-color: RoyalBlue;
+        }
+        </style>
+        
+        """
+    )
+
     # @st.cache(allow_output_mutation=True)
     def load_data(filename):
         covid_data=pd.read_csv(filename)
@@ -305,11 +377,16 @@ elif choose == "Project Analysis":
         st.pyplot(zz)
 
 elif choose=="Inferences":
-        # st.subheader('model training')
-        st.markdown(""" <style> .font {
-        font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
-        </style> """, unsafe_allow_html=True)
-        st.markdown('<p class="font">Model training</p>', unsafe_allow_html=True)   
+
+        col15, col25 = st.columns( [0.8, 0.2])
+        with col15:               # To display the header text using css style
+            st.markdown(""" <style> .font {
+            font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+            </style> """, unsafe_allow_html=True)
+            st.markdown('<p class="font">Model Training</p>', unsafe_allow_html=True)    
+        with col25:               # To display brand log
+            st.image(modelling, width=130 )
+
         # @st.cache(allow_output_mutation=True)
         def load_data(filename):
             covid_data=pd.read_csv(filename)
@@ -559,10 +636,20 @@ elif choose=="Inferences":
 
 
 elif choose == "Contact":
-    st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
-    </style> """, unsafe_allow_html=True)
-    st.markdown('<p class="font">Enquiry Contact Form</p>', unsafe_allow_html=True)
+    # st.markdown(""" <style> .font {
+    # font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+    # </style> """, unsafe_allow_html=True)
+    # st.markdown('<p class="font">Enquiry Contact Form</p>', unsafe_allow_html=True)
+
+    col115, col225 = st.columns( [0.8, 0.2])
+    with col115:               # To display the header text using css style
+        st.markdown(""" <style> .font {
+        font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+        </style> """, unsafe_allow_html=True)
+        st.markdown('<p class="font">Enquiry Contact Form</p>', unsafe_allow_html=True)    
+    with col225:               # To display brand log
+        st.image(enquiry, width=130 )
+
     with st.form(key='columns_in_form2',clear_on_submit=True): #set clear_on_submit=True so that the form will be reset/cleared once it's submitted
         #st.write('Please help us improve!')
         Name=st.text_input(label='Please Enter Your Name') #Collect user feedback
