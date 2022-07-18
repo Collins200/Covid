@@ -105,6 +105,7 @@ elif choose == "Project Analysis":
     color:white;
     
     }
+    .card-text { height: 42px; overflow-x: scroll; width: 100%; }
     </style>
         """
     )
