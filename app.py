@@ -101,7 +101,7 @@ elif choose == "Project Analysis":
     background: #395B64;
     padding: 20px;
     width: 200px;
-    height: 150px;
+    height: 250px;
     color:white;
     
     }
@@ -122,6 +122,7 @@ elif choose == "Project Analysis":
         <a href="https://hub.mph.in.gov/dataset/6bcfb11c-6b9e-44b2-be7f-a2910d28949a/resource/cb146210-5e7b-4427-82d6-6da8c08dbb1d/download/covid_report_death_date_agegrp_dictionary.xlsx">
         <button class="btn" href="https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD"><i class="fa fa-download"></i> Download File 1</button>
         </a>
+        <p style="color:white">and</p>
         <a href="https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD">
         <button class="btn" href="https://data.cdc.gov/api/views/3apk-4u4f/rows.csv?accessType=DOWNLOAD"><i class="fa fa-download"></i> Download File 2</button>
         </a>
