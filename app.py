@@ -101,11 +101,11 @@ elif choose == "Project Analysis":
     background: #395B64;
     padding: 20px;
     width: 200px;
-    height: 250px;
+    height: 300px;
     color:white;
     
     }
-    .card-text { height: 100%; overflow-y: auto; width: 100%; }
+    .card-text { height: 300px; overflow-y: auto; width: 100%; }
     </style>
         """
     )
