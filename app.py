@@ -89,7 +89,7 @@ elif choose == "Project Analysis":
     """
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <div class="card" style="width:100%" class="p-3 mb-2 bg-secondary text-white">
-    <ul class="">
+    <ul class="card-text">
         <li class="">Male are more vulnerable to Covid,Pneumonia and Influenza disease compared to female.</li>
         <li class="">The higher the number of years the more likelihood of getting the disease.</li>
         <li class="">Between 0-19 years there is a constant infection rate over time to mean minimal exposure to covid and other related diseases.</li>
